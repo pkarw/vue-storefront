@@ -84,7 +84,7 @@ Vue Storefront next setup is pretty straightforward. You just need to set the pr
     project-only-end */
     ['@vue-storefront/salesforce-cc-poc/nuxt', {
       api: {
-        uri: 'http://localhost:3001/api'
+        uri: 'https://salesforce-cc-graphql-bridge.herokuapp.com/api'
       }
     }]
 }
