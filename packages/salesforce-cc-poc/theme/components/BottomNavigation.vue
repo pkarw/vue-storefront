@@ -1,7 +1,7 @@
 <template>
 <!-- TODO: create logic with isActive prop for BottomNavigationItems -->
   <SfBottomNavigation class="mobile-only bottom-nav">
-    <nuxt-link :to="enrichLink('/')">
+    <nuxt-link :to="/">
       <SfBottomNavigationItem :class="$route.path == '/' ? 'sf-bottom-navigation__item--active' : ''" icon="home" size="20px" label="Home">
         <template #label>
           <div class="sf-bottom-navigation-item__label">
@@ -10,7 +10,7 @@
         </template>
       </SfBottomNavigationItem>
     </nuxt-link>
-    <nuxt-link :to="enrichLink('/c/womens')">
+    <nuxt-link :to="/c/womens">
       <SfBottomNavigationItem data-cy="bottom-navigation-url_menu" icon="menu" size="20px" label="Menu">
         <template #label>
           <div class="sf-bottom-navigation-item__label">
@@ -48,7 +48,6 @@ import { SfBottomNavigation, SfIcon, SfCircleIcon } from '@storefront-ui/vue';
 import uiState from '~/assets/ui-state';
 import { useCart, cartGetters, useUser } from '@vue-storefront/salesforce-cc-poc';
 const { toggleCartSidebar, toggleAccountModal, setIsLoginInAccountModal } = uiState;
-import { enrichLink } from '~/helpers/link/enrichLink';
 import { computed } from '@vue/composition-api';
 export default {
   components: {
@@ -60,7 +59,7 @@ export default {
     const { isAuthenticated } = useUser();
     const onAccountClicked = () => {
       isAuthenticated && isAuthenticated.value
-        ? root.$router.push(enrichLink('/my-account'))
+        ? root.$router.push('/my-account')
         : (() => {
           setIsLoginInAccountModal(true);
           toggleAccountModal();
@@ -74,7 +73,6 @@ export default {
     return {
       onAccountClicked,
       toggleCartSidebar,
-      enrichLink,
       cartTotalItems
     };
   }
